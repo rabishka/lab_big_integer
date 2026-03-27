@@ -4,7 +4,7 @@
 #include <vector>
 #include <iomanip>
 
-// удаляем нули перед числом (типа 000123 -> 123)
+
 void BigInteger::fix() {
     while (v.size() > 1 && v.back() == 0) {
         v.pop_back();
@@ -58,7 +58,6 @@ BigInteger::BigInteger(const std::string& s) {
         neg = false;
     }
     v.clear();
-    // идем по 9 цифр с конца
     for (int i = (int)s.size() - 1; i >= start; i -= 9) {
         int val = 0;
         int m = 1;
@@ -71,7 +70,7 @@ BigInteger::BigInteger(const std::string& s) {
     fix();
 }
 
-// сравнение модулей: 1 если больше, -1 если меньше, 0 если равно
+
 int BigInteger::cmp_abs(const BigInteger& b) const {
     if (v.size() != b.v.size()) {
         return (v.size() > b.v.size()) ? 1 : -1;
@@ -171,7 +170,7 @@ BigInteger& BigInteger::operator*=(const BigInteger& b) {
     return *this;
 }
 
-// Деление через подбор цифры (бинарным поиском)
+
 BigInteger& BigInteger::operator/=(const BigInteger& b) {
     if (b.is_zero()) return *this;
     bool r_neg = neg != b.neg;
