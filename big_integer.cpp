@@ -4,7 +4,6 @@
 #include <vector>
 #include <iomanip>
 
-
 void BigInteger::fix() {
     while (v.size() > 1 && v.back() == 0) {
         v.pop_back();
